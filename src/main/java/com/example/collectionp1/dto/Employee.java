@@ -9,26 +9,6 @@ public class Employee {
     public Employee(String fio) {
         this.fio = fio;
     }
-
-    public String getFio() {
-        return fio;
-    }
-//    public void setSalary(double salary) {
-//        if (salary < 0) {
-//            System.out.println("Ошибка!!! ЗП не может быть отрицательной!");
-//            return;
-//        }
-//        this.salary = salary;
-//    }
-
-//    public void setUnit(int unit) {
-//        if (unit > 5 || unit < 1) {
-//            System.out.println("Ошибка!!! Номер отдела от 1 до 5!");
-//            return;
-//        }
-//        this.unit = unit;
-//    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
