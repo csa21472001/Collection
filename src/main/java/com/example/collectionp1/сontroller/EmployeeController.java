@@ -10,16 +10,16 @@ import java.util.*;
 @RequestMapping("/employee")
 public class EmployeeController {
     public final EmployeeService employeeService;
-//    private final Map<String, Employee> employeeMap;
 
     public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
 
-    @GetMapping("/add")
-    public Employee add(@RequestParam String fio) {
-        return employeeService.addEmployee(fio);
+//        /departments/max-salary?departmentId=5
 
+    @GetMapping("/add")
+    public Employee add(@RequestParam int department, @RequestParam String fio, @RequestParam double salary) {
+        return employeeService.addEmployee(department, fio, salary);
     }
 
     @GetMapping("/remove")

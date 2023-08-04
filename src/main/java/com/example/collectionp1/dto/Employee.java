@@ -5,10 +5,23 @@ import java.util.Objects;
 public class Employee {
 
     private String fio;
+    private int department;
+    private double salary;
 
-    public Employee(String fio) {
+    public Employee(int department,String fio,double salary) {
         this.fio = fio;
+        this.department = department;
+        this.salary = salary;
     }
+
+    public int getDepartment() {
+        return department;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

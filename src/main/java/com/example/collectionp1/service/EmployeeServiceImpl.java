@@ -5,6 +5,7 @@ import com.example.collectionp1.exceptions.EmployeeAlreadyAddedException;
 import com.example.collectionp1.exceptions.EmployeeNotFoundException;
 import com.example.collectionp1.exceptions.EmployeeStorageIsFullException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.*;
 
@@ -18,12 +19,18 @@ public class EmployeeServiceImpl implements EmployeeService {
     public EmployeeServiceImpl() {
         this.employeeMap = new HashMap<>();
     }
+
+    public Employee returnMaxSalaryByDepartment(int department) {
+        Optional<String> maxSalary = employeeMap.stream()
+                .forEach()
+
+    }
     @Override
-    public Employee addEmployee(String fio) {
+    public Employee addEmployee(int department, String fio, double salary) {
         if (employeeMap.keySet().size() == EMPLOYESS_MAX_SIZE) {
             throw new EmployeeStorageIsFullException("Превышен лимит на новых сотрудников!!!");
         }
-        Employee employee = new Employee(fio);
+        Employee employee = new Employee(department, fio, salary);
         if (employeeMap.containsKey(fio)) {
             throw new EmployeeAlreadyAddedException("Сотрудник был добавлен ранее!");
         }
@@ -37,7 +44,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         if (!employeeMap.containsKey(fio)) {
             throw new EmployeeNotFoundException("Cотрудник не найден!!!");
         } else {
-            employeeMap.remove(fio);}
+            employeeMap.remove(fio);
+        }
 
         return employee;
     }
@@ -54,7 +62,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Collection <Employee> printAll() {
+    public Collection<Employee> printAll() {
         return employeeMap.values();
     }
 
