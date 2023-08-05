@@ -1,14 +1,14 @@
-package com.example.collectionp1.exceptions;
+package com.example.collectionp1.service;
 
 import com.example.collectionp1.dto.Employee;
-
+import com.example.collectionp1.exceptions.EmployeeNotFoundException;
 import com.example.collectionp1.service.EmployeeService;
-
 import com.example.collectionp1.service.StreamService;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
 
 import java.util.stream.Collectors;
@@ -42,7 +42,7 @@ public class StreamServiceImpl implements StreamService {
                 .collect(Collectors.toList());
     }
     @Override
-    public Map<Integer, Collection<Employee>> getThemAll() {
+    public Map<Integer, List<Employee>> getThemAll() {
         return employeeService.printAll().stream()
                 .collect(Collectors.groupingBy(empl -> empl.getDepartment()));
     }

@@ -1,33 +1,32 @@
 package com.example.collectionp1.сontroller;
-
 import com.example.collectionp1.dto.Employee;
-import com.example.collectionp1.exceptions.StreamServiceImpl;
-import com.example.collectionp1.service.EmployeeService;
+import com.example.collectionp1.service.StreamService;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.util.*;
 
 @RestController
 @RequestMapping("/departments")
 public class StreamController {
-    public final StreamServiceImpl streamService;
-    public StreamController(StreamServiceImpl streamService) {
+    public final StreamService streamService;
+    public StreamController(StreamService streamService) {
         this.streamService = streamService;
     }
     @GetMapping("/max-Salary")
-    public Employee MaxSalaryByDepartment(int department) {
+    public Employee MaxSalaryByDepartment(@RequestParam int department) {
         return streamService.MaxSalaryByDepartment(department);
     }
     @GetMapping("/min-Salary")
-    public Employee MinSalaryByDepartment(int department) {
+    public Employee MinSalaryByDepartment(@RequestParam int department) {
         return streamService.MinSalaryByDepartment(department);
     }
     @GetMapping("/all")
-    public Collection <Employee> getThemAllByDepartment(int department) {
+    public Collection <Employee> getThemAllByDepartment(@RequestParam int department) {
         return streamService.getThemAllByDepartment(department);
     }
     @GetMapping("/all")
-    public Map <Integer, Collection<Employee>> getThemAll() {
+    public Map<Integer, List<Employee>> getThemAll() {
         return streamService.getThemAll();
     }
 }
