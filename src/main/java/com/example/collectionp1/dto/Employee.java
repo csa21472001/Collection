@@ -13,6 +13,9 @@ public class Employee {
         this.department = department;
         this.salary = salary;
     }
+    public Employee(String fio) {
+        this.fio = fio;
+    }
 
     public int getDepartment() {
         return department;

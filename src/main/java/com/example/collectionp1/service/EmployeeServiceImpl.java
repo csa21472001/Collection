@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.*;
 
-
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
@@ -20,11 +19,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         this.employeeMap = new HashMap<>();
     }
 
-    public Employee returnMaxSalaryByDepartment(int department) {
-        Optional<String> maxSalary = employeeMap.stream()
-                .forEach()
-
-    }
     @Override
     public Employee addEmployee(int department, String fio, double salary) {
         if (employeeMap.keySet().size() == EMPLOYESS_MAX_SIZE) {
@@ -65,6 +59,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Collection<Employee> printAll() {
         return employeeMap.values();
     }
+
+
 
 }
 

@@ -1,8 +1,12 @@
 package com.example.collectionp1.service;
 
 import com.example.collectionp1.dto.Employee;
+import com.example.collectionp1.exceptions.EmployeeNotFoundException;
 
 import java.util.Collection;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 
 public interface EmployeeService {
