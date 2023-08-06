@@ -5,7 +5,7 @@ import com.example.collectionp1.exceptions.EmployeeAlreadyAddedException;
 import com.example.collectionp1.exceptions.EmployeeNotFoundException;
 import com.example.collectionp1.exceptions.EmployeeStorageIsFullException;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 import java.util.*;
 
@@ -40,7 +40,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         } else {
             employeeMap.remove(fio);
         }
-
         return employee;
     }
 

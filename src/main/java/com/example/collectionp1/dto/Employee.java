@@ -13,12 +13,17 @@ public class Employee {
         this.department = department;
         this.salary = salary;
     }
-    public Employee(String fio) {
-        this.fio = fio;
+
+    public String getFio() {
+        return fio;
     }
 
     public int getDepartment() {
         return department;
+    }
+
+    public Employee(String fio) {
+        this.fio = fio;
     }
 
     public double getSalary() {

@@ -2,8 +2,6 @@ package com.example.collectionp1.сontroller;
 import com.example.collectionp1.dto.Employee;
 import com.example.collectionp1.service.StreamService;
 import org.springframework.web.bind.annotation.*;
-
-
 import java.util.*;
 
 @RestController
@@ -21,7 +19,7 @@ public class StreamController {
     public Employee MinSalaryByDepartment(@RequestParam int department) {
         return streamService.MinSalaryByDepartment(department);
     }
-    @GetMapping("/all")
+    @GetMapping(path = "/all", params = {"department"})
     public Collection <Employee> getThemAllByDepartment(@RequestParam int department) {
         return streamService.getThemAllByDepartment(department);
     }
