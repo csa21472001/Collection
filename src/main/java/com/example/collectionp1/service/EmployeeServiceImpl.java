@@ -4,6 +4,7 @@ import com.example.collectionp1.dto.Employee;
 import com.example.collectionp1.exceptions.EmployeeAlreadyAddedException;
 import com.example.collectionp1.exceptions.EmployeeNotFoundException;
 import com.example.collectionp1.exceptions.EmployeeStorageIsFullException;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 
@@ -24,7 +25,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         if (employeeMap.keySet().size() == EMPLOYESS_MAX_SIZE) {
             throw new EmployeeStorageIsFullException("Превышен лимит на новых сотрудников!!!");
         }
-        Employee employee = new Employee(department, fio, salary);
+        Employee employee = new Employee(
+                department,
+                StringUtils.capitalize(fio),
+                salary);
         if (employeeMap.containsKey(fio)) {
             throw new EmployeeAlreadyAddedException("Сотрудник был добавлен ранее!");
         }
