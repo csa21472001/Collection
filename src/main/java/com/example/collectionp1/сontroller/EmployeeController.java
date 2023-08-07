@@ -4,7 +4,7 @@ import com.example.collectionp1.dto.Employee;
 import com.example.collectionp1.service.EmployeeService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.*;
 
 @RestController
 @RequestMapping("/employee")
@@ -15,10 +15,11 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
-    @GetMapping("/add")
-    public Employee add(@RequestParam String fio) {
-        return employeeService.addEmployee(fio);
+//        /departments/max-salary?departmentId=5
 
+    @GetMapping("/add")
+    public Employee add(@RequestParam int department, @RequestParam String fio, @RequestParam double salary) {
+        return employeeService.addEmployee(department, fio, salary);
     }
 
     @GetMapping("/remove")
@@ -32,7 +33,7 @@ public class EmployeeController {
     }
 
     @GetMapping
-    public List<Employee> printAll() {
+    public Collection<Employee> printAll() {
         return employeeService.printAll();
     }
 

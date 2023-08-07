@@ -5,29 +5,30 @@ import java.util.Objects;
 public class Employee {
 
     private String fio;
+    private int department;
+    private double salary;
 
-    public Employee(String fio) {
+    public Employee(int department,String fio,double salary) {
         this.fio = fio;
+        this.department = department;
+        this.salary = salary;
     }
 
     public String getFio() {
         return fio;
     }
-//    public void setSalary(double salary) {
-//        if (salary < 0) {
-//            System.out.println("Ошибка!!! ЗП не может быть отрицательной!");
-//            return;
-//        }
-//        this.salary = salary;
-//    }
 
-//    public void setUnit(int unit) {
-//        if (unit > 5 || unit < 1) {
-//            System.out.println("Ошибка!!! Номер отдела от 1 до 5!");
-//            return;
-//        }
-//        this.unit = unit;
-//    }
+    public int getDepartment() {
+        return department;
+    }
+
+    public Employee(String fio) {
+        this.fio = fio;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
 
     @Override
     public boolean equals(Object o) {
