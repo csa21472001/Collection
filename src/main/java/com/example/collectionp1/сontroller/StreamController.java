@@ -24,7 +24,7 @@ public class StreamController {
         return streamService.getThemAllByDepartment(department);
     }
     @GetMapping("/all")
-    public Map<Integer, List<Employee>> getThemAll() {
+    public Map<Integer,List<Employee> > getThemAll() {
         return streamService.getThemAll();
     }
 }
