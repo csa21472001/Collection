@@ -29,6 +29,7 @@ class StreamServiceTest {
     Employee fedor = new Employee(2, "Fedor Fedorov", 30000);
     Employee jorik = new Employee(1, "Jorik", 10000000);
     Collection<Employee> employees;
+    int department = 1;
 
     @BeforeEach
     void beforeEach() {
@@ -44,7 +45,6 @@ class StreamServiceTest {
 
     @Test
     void findMaxSalaryEmployee_employeeNotFound_returnThrowException() {
-        int department = 1;
         when(employeeService.printAll()).thenReturn(Collections.emptyList());
 
         EmployeeNotFoundException ex = assertThrows(EmployeeNotFoundException.class,
@@ -56,13 +56,12 @@ class StreamServiceTest {
     @Test
     void findMinSalaryEmployee_employeeInDepartment_returnEmployeeWithMinSalary() {
         when(employeeService.printAll()).thenReturn(employees);
-        Employee result = underTest.MinSalaryByDepartment(1);
+        Employee result = underTest.MinSalaryByDepartment(department);
         assertEquals(ivan, result);
     }
 
     @Test
     void findMinSalaryEmployee_employeeNotFound_returnThrowException() {
-        int department = 1;
         when(employeeService.printAll()).thenReturn(Collections.emptyList());
 
         EmployeeNotFoundException ex = assertThrows(EmployeeNotFoundException.class,

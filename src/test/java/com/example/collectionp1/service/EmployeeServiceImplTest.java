@@ -1,22 +1,25 @@
 package com.example.collectionp1.service;
-
 import com.example.collectionp1.dto.Employee;
 import com.example.collectionp1.exceptions.EmployeeAlreadyAddedException;
 import com.example.collectionp1.exceptions.EmployeeNotFoundException;
 import com.example.collectionp1.exceptions.EmployeeStorageIsFullException;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+
 
 class EmployeeServiceImplTest {
     EmployeeServiceImpl underTest = new EmployeeServiceImpl();
     Employee employee = new Employee(1, "Ivan Ivanov", 50000);
-
+    @AfterEach
+    void cleanup() {
+        underTest.removeEmployee(employee.getFio());
+    }
     @Test
     void addEmployee_freshmoreEmployee_employeeAdded() {
         Employee result = underTest.addEmployee(employee.getDepartment(), employee.getFio(), employee.getSalary());
@@ -26,6 +29,7 @@ class EmployeeServiceImplTest {
 
     @Test
     void addEmployee_employeeHasBeenAdded_thrownException() {
+        Employee result = underTest.addEmployee(employee.getDepartment(), employee.getFio(), employee.getSalary());
         EmployeeAlreadyAddedException ex = assertThrows(EmployeeAlreadyAddedException.class,
                 () -> underTest.addEmployee(employee.getDepartment(), employee.getFio(), employee.getSalary()));
         assertEquals("Сотрудник был добавлен ранее!", ex.getMessage());
@@ -33,8 +37,8 @@ class EmployeeServiceImplTest {
 
     @Test
     void addEmployee_EMPLOYESS_MAX_SIZE_exceeded_thrownException() {
-        int EMP_MAX_SZ = 4;
-        for (int i = 0; i < EMP_MAX_SZ; i++) {
+        int empMax = 4;
+        for (int i = 0; i < empMax; i++) {
             underTest.addEmployee(1, "Ivan Ivanov" + String.valueOf(i), 5929.0);
         }
         EmployeeStorageIsFullException ex = assertThrows(EmployeeStorageIsFullException.class,
@@ -75,7 +79,7 @@ class EmployeeServiceImplTest {
     @Test
     void printAll_emptyList_returnEmptyCollection() {
         Collection<Employee> result = underTest.printAll();
-        assertIterableEquals(Collections.emptyList(), result, "пзд");
+        assertIterableEquals(Collections.emptyList(), result);
 
     }
 
