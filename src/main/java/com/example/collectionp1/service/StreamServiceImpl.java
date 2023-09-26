@@ -25,7 +25,7 @@ public class StreamServiceImpl implements StreamService {
         return employeeService.printAll().stream()
                 .filter(empl -> empl.getDepartment() == department)
                 .max(Comparator.comparingDouble(empl2 -> empl2.getSalary()))
-                .orElseThrow(() -> new EmployeeNotFoundException("Нет сотрудника в отделе" + department));
+                .orElseThrow(() -> new EmployeeNotFoundException("Указанного сотрудника нет в отделе" + department));
     }
     @Override
     public Employee MinSalaryByDepartment(int department) {

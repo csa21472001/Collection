@@ -1,25 +1,21 @@
 package com.example.collectionp1.service;
-
 import com.example.collectionp1.dto.Employee;
 import com.example.collectionp1.exceptions.EmployeeAlreadyAddedException;
 import com.example.collectionp1.exceptions.EmployeeNotFoundException;
 import com.example.collectionp1.exceptions.EmployeeStorageIsFullException;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
-
-
 import java.util.*;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
     private final Map<String, Employee> employeeMap;
-    private static final int EMPLOYESS_MAX_SIZE = 10;
+    private static final int EMPLOYESS_MAX_SIZE = 4;
 
     public EmployeeServiceImpl() {
         this.employeeMap = new HashMap<>();
     }
-
     @Override
     public Employee addEmployee(int department, String fio, double salary) {
         if (employeeMap.keySet().size() == EMPLOYESS_MAX_SIZE) {
@@ -35,7 +31,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeMap.put(fio, employee);
         return employee;
     }
-
     @Override
     public Employee removeEmployee(String fio) {
         Employee employee = new Employee(fio);

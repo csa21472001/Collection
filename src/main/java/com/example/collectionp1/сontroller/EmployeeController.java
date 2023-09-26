@@ -26,13 +26,11 @@ public class EmployeeController {
 
     @GetMapping("/remove")
     public Employee remove(@RequestParam String fio) {
-        EmployeeNameValidator.checkName(fio);
         return employeeService.removeEmployee(fio);
     }
 
     @GetMapping("/find")
     public Employee find(@RequestParam String fio) {
-        EmployeeNameValidator.checkName(fio);
         return employeeService.findEmployee(fio);
     }
 
