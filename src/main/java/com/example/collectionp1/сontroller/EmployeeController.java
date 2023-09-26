@@ -2,6 +2,7 @@ package com.example.collectionp1.сontroller;
 
 import com.example.collectionp1.dto.Employee;
 import com.example.collectionp1.service.EmployeeService;
+import com.example.collectionp1.util.EmployeeNameValidator;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -19,16 +20,19 @@ public class EmployeeController {
 
     @GetMapping("/add")
     public Employee add(@RequestParam int department, @RequestParam String fio, @RequestParam double salary) {
+        EmployeeNameValidator.checkName(fio);
         return employeeService.addEmployee(department, fio, salary);
     }
 
     @GetMapping("/remove")
     public Employee remove(@RequestParam String fio) {
+        EmployeeNameValidator.checkName(fio);
         return employeeService.removeEmployee(fio);
     }
 
     @GetMapping("/find")
     public Employee find(@RequestParam String fio) {
+        EmployeeNameValidator.checkName(fio);
         return employeeService.findEmployee(fio);
     }
 
